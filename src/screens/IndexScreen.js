@@ -37,6 +37,15 @@ const IndexScreen = ( props ) => {
     )
 }
 
+IndexScreen.navigationOptions = ( props ) => {
+    return {
+        headerRight: 
+            <TouchableOpacity onPress={() => props.navigation.navigate('Create')}>
+                <Feather name="plus" size={30} style={styles.plus} />
+            </TouchableOpacity>
+    }
+}
+
 const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
@@ -52,6 +61,9 @@ const styles = StyleSheet.create({
     }, 
     icon: {
         fontSize: 24
+    },
+    plus:  {
+        marginRight: 10
     }
 })
 
