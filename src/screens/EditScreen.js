@@ -5,13 +5,15 @@ import { Context } from '../context/BlogContext'
 const EditScreen = (props) => {
     const { state } = useContext(Context)
 
-    const blogPost = state.find((blogPost) => blogPost.id === props.navigation.getParam('id'))
+    const blogPost = state.find((blogPost) => blogPost.id === props.navigation.state.params.id)
 
     console.log(blogPost) 
-    
+
     return (
         <View>
             <Text>Edit Screen</Text>
+            <Text>{blogPost.title}</Text>
+            <Text>{blogPost.content}</Text>
         </View>
     )
 }

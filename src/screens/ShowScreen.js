@@ -12,23 +12,41 @@ const ShowScreen = ( props ) => {
 
     return (
         <View>
-            <Text>{blogPost.title}</Text>
-            <Text>{blogPost.content}</Text>
+            <Text style={styles.label}>Blog Title</Text>
+            <Text style={styles.input}>{blogPost.title}</Text>
+            <Text style={styles.label}>Blog Content</Text>
+            <Text style={styles.input}>{blogPost.content}</Text>
         </View>
     )
 }
 
 ShowScreen.navigationOptions = (props) => {
-    // console.log(props.state.params.id)
+    const blogId = props.navigation.state.params.id
+    // console.log(blogId)
+
     return {
         headerRight: (
-            <TouchableOpacity onPress={() => props.navigation.navigate('Edit')}>
+            <TouchableOpacity onPress={() => props.navigation.navigate('Edit', {id: blogId})}>
                 <EvilIcons name="pencil" size={35}></EvilIcons>
             </TouchableOpacity>
         )
     }
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    input: {
+        fontSize: 18, 
+        borderWidth: 1,
+        borderColor: 'black',
+        marginBottom: 15,
+        padding: 5,
+        margin: 5
+    },
+    label: {
+        fontSize: 20,
+        marginBottom: 5,
+        marginLeft: 5
+    }
+})
 
 export default ShowScreen
