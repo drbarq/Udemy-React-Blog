@@ -1,9 +1,12 @@
 import createContext from './createDataContext'
 import CreateDataContext from './createDataContext'
+import jsonServer from '../api/jsonServer'
 
 // example of using createContext reusable component
 const blogReducer = (state, action) => {
     switch (action.type) {
+        case 'get_blogposts':
+            return action.payload
         case 'edit_blogpost':
                 return state.map((blogPost) => {
                     return blogPost.id === action.payload.id 
@@ -23,6 +26,13 @@ const blogReducer = (state, action) => {
             ]
         default:
             return state
+    }
+}
+
+const getBlogPosts = dispatch => {
+    return async () => {
+        const response = await jsonServer.get('./blogposts')
+        dispatch({ type: 'get_blogposts', payload: response.data})
     }
 }
 
@@ -52,8 +62,8 @@ const editBlogPost = dispatch => {
 
 export const { Context, Provider } = CreateDataContext( 
     blogReducer, 
-    { addBlogPost: addBlogPost, deleteBlogPost: deleteBlogPost, editBlogPost: editBlogPost },
-    [{ title: 'TEST POST', content: 'TEST CONTENT', id: 1}]
+    { addBlogPost: addBlogPost, deleteBlogPost: deleteBlogPost, editBlogPost: editBlogPost, getBlogPosts: getBlogPosts },
+    []
 )
 
 
