@@ -2,7 +2,6 @@ import createContext from './createDataContext'
 import CreateDataContext from './createDataContext'
 import jsonServer from '../api/jsonServer'
 
-// example of using createContext reusable component
 const blogReducer = (state, action) => {
     switch (action.type) {
         case 'get_blogposts':
