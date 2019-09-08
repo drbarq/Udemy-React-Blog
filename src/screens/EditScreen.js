@@ -1,19 +1,21 @@
-import React, { useContext } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import React, { useContext, useState } from 'react'
+import { Text, View, StyleSheet, TextInput } from 'react-native'
 import { Context } from '../context/BlogContext'
 
 const EditScreen = (props) => {
     const { state } = useContext(Context)
-
     const blogPost = state.find((blogPost) => blogPost.id === props.navigation.state.params.id)
 
-    console.log(blogPost) 
+    const [title, setTitle] = useState(blogPost.title)
+    const [content, setContent] = useState(blogPost.content)
 
     return (
         <View>
-            <Text>Edit Screen</Text>
-            <Text>{blogPost.title}</Text>
-            <Text>{blogPost.content}</Text>
+            <Text>Edit Title:</Text>
+            <TextInput 
+                value={title}
+                onChangeText={(newTitle) => setTitle(newTitle)}>
+            </TextInput>
         </View>
     )
 }
