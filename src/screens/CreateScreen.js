@@ -8,6 +8,7 @@ const CreateScreen = ( props ) => {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const { addBlogPost } = useContext(Context)
+        // destructure off of context
 
     return (
         <View>
