@@ -25,7 +25,9 @@ const CreateScreen = ( props ) => {
             />
             <Button 
                 title="Add Blog Post"
-                onPress={() => addBlogPost(title, content)}
+                onPress={() => addBlogPost(title, content, () => {
+                    props.navigation.navigate('Index')
+                })}
             >
             </Button>
         </View>
