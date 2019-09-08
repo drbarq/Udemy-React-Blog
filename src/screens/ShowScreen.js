@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import {Context as Context} from '../context/BlogContext'  
-import { EvilIcons } from '@expo/vector-icons'
     // example of renaming context
+import { EvilIcons } from '@expo/vector-icons'
+
 
 const ShowScreen = ( props ) => {
     const { state } = useContext(Context)
@@ -18,6 +19,7 @@ const ShowScreen = ( props ) => {
 }
 
 ShowScreen.navigationOptions = (props) => {
+    // console.log(props.state.params.id)
     return {
         headerRight: (
             <TouchableOpacity onPress={() => props.navigation.navigate('Edit')}>
